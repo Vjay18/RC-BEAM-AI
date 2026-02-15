@@ -1,4 +1,5 @@
 streamlit
-numpy
-joblib
+pandas
 scikit-learn
+joblib
+openpyxl
