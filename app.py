@@ -22,7 +22,17 @@ UPV = st.number_input("UPV (km/s)", min_value=2.0, max_value=6.0)
 b = st.number_input("Beam width b (mm)", min_value=150.0)
 d = st.number_input("Effective depth d (mm)", min_value=200.0)
 Ast = st.number_input("Area of tension steel Ast (mm²)", min_value=1.0)
-fy = st.number_input("Steel grade fy (MPa)", value=415.0)
+steel_grade = st.selectbox(
+    "Grade of Steel",
+    ["Fe 250", "Fe 415", "Fe 500"]
+)
+
+if steel_grade == "Fe 250":
+    fy = 250
+elif steel_grade == "Fe 415":
+    fy = 415
+else:
+    fy = 500
 
 # ---------------- CALCULATION ----------------
 if st.button("CALCULATE"):
@@ -62,4 +72,5 @@ if st.button("CALCULATE"):
         st.caption(
             "Note: Neutral axis depth is assumed within limiting depth "
             "(singly reinforced beam – IS 456 Annex G)."
+
         )
